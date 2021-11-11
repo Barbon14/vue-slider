@@ -14,32 +14,35 @@
 
         <!-- contenitore immagini -->
         <div class="images-container">
-            <!-- <div class="image">
-                <img src="img/01.jpg" alt="">
+            <div class="image active">
+                <img :src="slides[activeSlide].image" :alt="slides[activeSlide].title">
                 <div class="text">
                     <h3>
-                
+                        {{ slides[activeSlide].title }}
                     </h3>
                     <p>
-                
+                        {{ slides[activeSlide].text }}
                     </p>
                 </div>
-            </div> -->
-            
+            </div>
         </div>
 
         <!-- contenitore thumbnails -->
         <div class="thumbs-container">
-            <div class="thumb" v-for="slide, i in slides" :key="i">
+            <div class="thumb" v-for="slide, i in slides" :class="i === activeSlide ? 'active' : null " :key="i" @click="activeSlide = i">
                 <img :src="slide.image" :alt="slide.title">
             </div>
 
-            <div class="prev">&uarr;</div>
-            <div class="next">&darr;</div>
+            <!-- comandi slide -->
+            <div class="prev" @click="prevSlide">&uarr;</div>
+            <div class="next" @click="nextSlide">&darr;</div>
         </div>
     </div>
 
+    <!-- vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <!-- my js -->
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

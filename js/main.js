@@ -1,6 +1,10 @@
+// aggiungo istanza di VUE
 var app = new Vue({
     el: '#app',
     data: {
+        activeSlide: 0, // contatore slide attive
+
+        // array con slide come oggetti
         slides: [
             {
                 'image': 'img/01.jpg',
@@ -28,5 +32,28 @@ var app = new Vue({
                 'text': 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam'
             },
         ],
+    },
+
+    methods : {
+
+        // pulsante slide precedente
+        prevSlide : function () {
+            if (this.activeSlide === 0) {
+                this.activeSlide = this.slides.length - 1;
+            } else {
+                this.activeSlide--;
+            }
+            console.log(this.activeSlide);
+        },
+
+        // pulsante prossima slide
+        nextSlide : function() {
+            if (this.activeSlide === this.slides.length - 1) {
+                this.activeSlide = 0
+            } else {
+                this.activeSlide++;
+            }
+            console.log(this.activeSlide);
+        },
     }
-})
+});

@@ -30,8 +30,8 @@
 
         <!-- contenitore thumbnails -->
         <div class="thumbs-container">
-            <div class="thumb">
-                <!-- <img src="img/01.jpg" alt=""> -->
+            <div class="thumb" v-for="slide, i in slides" :key="i">
+                <img :src="slide.image" :alt="slide.title">
             </div>
 
             <div class="prev">&uarr;</div>
